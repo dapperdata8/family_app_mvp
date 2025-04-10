@@ -1,4 +1,6 @@
 import streamlit as st
+st.write("🔑 Available secrets:", list(st.secrets.keys()))
+
 from auth import auth
 import datetime
 from firebase_config import init_firebase
