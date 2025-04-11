@@ -1,42 +1,14 @@
 import streamlit as st
 st.write("🔑 Available secrets:", list(st.secrets.keys()))
 
-from auth import auth
+#from auth import auth
 import datetime
 from firebase_config import init_firebase
 
 #USER LOGIN
-if "user" not in st.session_state:
-    st.session_state.user = None
+#if "user" not in st.session_state:
+ #   st.session_state.user = None
 
-if not st.session_state.user:
-    st.title("🔐 Family App Login")
-
-    choice = st.radio("Login or Sign Up", ["Login", "Sign Up"])
-    email = st.text_input("Email")
-    password = st.text_input("Password", type="password")
-
-    if choice == "Sign Up":
-        if st.button("Create Account"):
-            try:
-                user = auth.create_user_with_email_and_password(email, password)
-                st.success("Account created! You can now log in.")
-            except Exception as e:
-                st.error(f"Error: {e}")
-    else:
-        if st.button("Login"):
-            try:
-                user = auth.sign_in_with_email_and_password(email, password)
-                st.session_state.user = user
-                st.success("Logged in successfully!")
-                st.experimental_rerun()
-            except Exception as e:
-                st.error(f"Login failed: {e}")
-else:
-    st.sidebar.success(f"Logged in as: {st.session_state.user['email']}")
-    if st.sidebar.button("Logout"):
-        st.session_state.user = None
-        st.experimental_rerun()
 
 
 
