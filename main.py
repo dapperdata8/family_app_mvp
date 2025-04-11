@@ -1,4 +1,5 @@
 import streamlit as st
+st.write("🔥 App is starting...")
 from firebase_config import init_firebase
 import datetime
 
