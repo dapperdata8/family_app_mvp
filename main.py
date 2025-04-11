@@ -1,10 +1,18 @@
 import streamlit as st
-#st.write("🔥 App is starting...")
+st.write("🔥 App is starting...")
 from firebase_config import init_firebase
 import datetime
 
 # Initialize Firebase
-db, bucket = init_firebase()
+try:
+    db, bucket = init_firebase()
+    st.success("✅ Firebase initialized.")
+except Exception as e:
+    st.error("❌ Firebase failed to initialize.")
+    st.exception(e)
+
+
+#db, bucket = init_firebase()
 
 st.title("👨‍👩‍👧‍👦 Family App MVP")
 
