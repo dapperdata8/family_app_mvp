@@ -1,5 +1,17 @@
 import streamlit as st
 st.write("🔥 App is starting...")
+
+try:
+    from firebase_config import init_firebase
+    import datetime
+
+    st.write("📡 Trying to connect to Firebase...")
+    db, bucket = init_firebase()
+    st.success("✅ Firebase initialized")
+
+except Exception as e:
+    st.error("❌ Failed during startup")
+    st.exception(e)
 from firebase_config import init_firebase
 import datetime
 
